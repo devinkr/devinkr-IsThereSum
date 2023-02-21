@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 public class IsThereSum {
     /**
@@ -10,6 +11,14 @@ public class IsThereSum {
      * @return true if two separate values in the array add up to a target, false otherwise.
      */
     public boolean check(int[] arr, int target){
+        HashMap<Integer, Integer> seen = new HashMap<Integer, Integer>();
+        for (int num : arr) {
+            int diff = target - num;
+            if (seen.containsKey(diff)) {
+                return true;
+            }
+            seen.put(num, 0);
+        }
         return false;
     }
 }
